@@ -10,6 +10,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 const processDates = (cities) => {
+
   return _(cities)
     .filter(({ time }) => {
       const isFive = time.indexOf('5:') > 0;
@@ -39,10 +40,11 @@ router.get('/', function(req, res) {
       console.log('xxx why does this not work? xxxx');
       console.log('cities: ', cities);
 
-      (async () => {
-        const responseData = await processDates(cities);
-        res.status(200).send(responseData);
-      })();
+      // (async () => {
+      //   const responseData = await processDates(cities);
+      //   console.log('responseData: ', responseData);
+      // })();
+      res.status(200).send(cities);
     })
     .catch(error => {
       console.log(error);
