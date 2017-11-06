@@ -39,6 +39,7 @@ const processDates = (cities, callback) => {
 router.get('/', function(req, res) {
   scrape()
     .then(cities => {
+      console.log('xxx why xxxx');
       console.log('cities: ', cities);
 
       processDates(cities, (responseData) => {
