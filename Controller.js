@@ -47,19 +47,20 @@ router.get('/', function(req, res) {
 
       res.status(200).send(
         _.filter(cities, ({ time }) => {
-            const isFive = time.indexOf('5:') > 0;
-            const isPm = time.indexOf('p.m') > 0;
+          const isFive = time.indexOf('5:') > 0;
+          const isPm = (time.indexOf('p.m') || time.indexOf('pm')) > 0;
 
-            // console.log('time.indexOf(\'5:\'): ', time.indexOf('5:'));
-            // console.log('isFive: ', isFive);
+          // console.log('time.indexOf(\'5:\'): ', time.indexOf('5:'));
+          // console.log('isFive: ', isFive);
 
-            console.log('time ', time);
-            console.log('time.indexOf(\'p.m\'): ', time.indexOf('p.m'));
-            console.log('isPm: ', isPm);
-            console.log('isFive && isPm: ', isFive && isPm);
+          console.log('time ', time);
 
-            return isFive && isPm;
-          })
+          console.log("time.indexOf('p.m'): ", time.indexOf('p.m'));
+          console.log('isPm: ', isPm);
+          console.log('isFive && isPm: ', isFive && isPm);
+
+          return isFive && isPm;
+        })
 
         //   _.filter(cities, ({ time }) => {
         //     const isFive = time.indexOf('5:') > 0;
@@ -81,7 +82,7 @@ router.get('/', function(req, res) {
         //   };
         // })
 
-      // _(cities)
+        // _(cities)
         //   .filter(({ time }) => {
         //     const isFive = time.indexOf('5:') > 0;
         //     const isPm = time.indexOf('p.m') > 0;
@@ -101,8 +102,6 @@ router.get('/', function(req, res) {
         //     };
         //   })
         //   .value()
-
-
       );
     })
     .catch(error => {
