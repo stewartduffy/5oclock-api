@@ -10,14 +10,18 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 const processDates = cities => {
+
   return _(cities)
     .filter(({ time }) => {
       const isFive = time.indexOf('5:') > 0;
       const isPm = time.indexOf('p.m') > 0;
       return isFive && isPm;
     })
-    .map(function({ name, time }) {
+    .map(({ name, time }) => {
       const cleanTime = time.replace('p.m.', 'pm').replace('a.m.', 'am');
+
+      console.log('cleanTime: ', cleanTime);
+
       return {
         name,
         time,
@@ -26,6 +30,7 @@ const processDates = cities => {
       };
     })
     .value();
+
 };
 
 // RETURNS ALL THE USERS IN THE DATABASE
