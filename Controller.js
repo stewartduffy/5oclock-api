@@ -46,13 +46,20 @@ router.get('/', function(req, res) {
       //   const responseData = await processDates(cities);
 
       res.status(200).send(
-        // _.filter(cities, ({ time }) => {
-        //     const isFive = time.indexOf('5:') > 0;
-        //     const isPm = time.indexOf('p.m') > 0;
-        //
-        //     return isFive && isPm;
-        //   })
-        //
+        _.filter(cities, ({ time }) => {
+            const isFive = time.indexOf('5:') > 0;
+            const isPm = time.indexOf('p.m') > 0;
+
+            console.log('time.indexOf(\'5:\'): ', time.indexOf('5:'));
+            console.log('isFive: ', isFive);
+
+            console.log('time.indexOf(\'p.m\'): ', time.indexOf('p.m'));
+            console.log('isPm: ', isPm);
+            console.log('isFive && isPm: ', isFive && isPm);
+
+            return isFive && isPm;
+          })
+
         //   _.filter(cities, ({ time }) => {
         //     const isFive = time.indexOf('5:') > 0;
         //     const isPm = time.indexOf('p.m') > 0;
@@ -60,18 +67,18 @@ router.get('/', function(req, res) {
         //     return isFive && isPm;
         //   });
 
-        _.map(cities, ({ name, time }) => {
-          const cleanTime = time.replace('p.m.', 'pm').replace('a.m.', 'am');
-
-          console.log('cleanTime: ', cleanTime);
-
-          return {
-            name,
-            time,
-            cleanTime,
-            moment: moment(cleanTime, 'ddd h.mm a').format('dddd, MMMM Do YYYY, h:mm:ss a')
-          };
-        })
+        // _.map(cities, ({ name, time }) => {
+        //   const cleanTime = time.replace('p.m.', 'pm').replace('a.m.', 'am');
+        //
+        //   console.log('cleanTime: ', cleanTime);
+        //
+        //   return {
+        //     name,
+        //     time,
+        //     cleanTime,
+        //     moment: moment(cleanTime, 'ddd h.mm a').format('dddd, MMMM Do YYYY, h:mm:ss a')
+        //   };
+        // })
 
       // _(cities)
         //   .filter(({ time }) => {
