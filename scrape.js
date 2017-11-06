@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const WEBSITE = 'https://www.timeanddate.com/worldclock/full.html?sort=2';
 
 let scrape = async () => {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
   const page = await browser.newPage();
 
   await page.setRequestInterceptionEnabled(true);
