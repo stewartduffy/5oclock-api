@@ -9,12 +9,13 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const processDates = cities => {
+const processDates = (cities, callback) => {
 
-  return _(cities)
+  const data = _(cities)
     .filter(({ time }) => {
       const isFive = time.indexOf('5:') > 0;
       const isPm = time.indexOf('p.m') > 0;
+
       return isFive && isPm;
     })
     .map(({ name, time }) => {
@@ -31,6 +32,7 @@ const processDates = cities => {
     })
     .value();
 
+  callback(data);
 };
 
 // RETURNS ALL THE USERS IN THE DATABASE
@@ -38,10 +40,11 @@ router.get('/', function(req, res) {
   scrape()
     .then(cities => {
       console.log('cities: ', cities);
-      const responseData = processDates(cities);
-      console.log('responseData: ', responseData);
 
-      res.status(200).send(responseData);
+      processDates(cities, (responseData) => {
+        res.status(200).send(responseData);
+      });
+
     })
     .catch(error => {
       console.log(error);
