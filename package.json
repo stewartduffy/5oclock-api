@@ -1,0 +1,28 @@
+{
+  "name": "5oclock-API",
+  "version": "1.0.0",
+  "description": "App to tell you where in the world is 5oclock",
+  "main": "app.js",
+  "engines": {
+    "node": ">=8.8.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.1",
+    "puppeteer": "^0.12.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-plugin-node": "^5.2.1",
+    "prettier": "1.7.4",
+    "prettier-scripts": "^0.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier-scripts-write --targets '**/*.js'"
+  },
+  "author": "",
+  "license": "ISC"
+}
