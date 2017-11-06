@@ -2,9 +2,8 @@
   "name": "5oclock-API",
   "version": "1.0.0",
   "description": "App to tell you where in the world is 5oclock",
-  "main": "app.js",
   "engines": {
-    "node": ">=8.8.1"
+    "node": "8.8.1"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -20,6 +19,7 @@
     "prettier-scripts": "^0.3.0"
   },
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier-scripts-write --targets '**/*.js'"
   },
