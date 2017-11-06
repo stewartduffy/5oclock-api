@@ -50,9 +50,10 @@ router.get('/', function(req, res) {
             const isFive = time.indexOf('5:') > 0;
             const isPm = time.indexOf('p.m') > 0;
 
-            console.log('time.indexOf(\'5:\'): ', time.indexOf('5:'));
-            console.log('isFive: ', isFive);
+            // console.log('time.indexOf(\'5:\'): ', time.indexOf('5:'));
+            // console.log('isFive: ', isFive);
 
+            console.log('time ', time);
             console.log('time.indexOf(\'p.m\'): ', time.indexOf('p.m'));
             console.log('isPm: ', isPm);
             console.log('isFive && isPm: ', isFive && isPm);
