@@ -9,9 +9,8 @@ const router = express.Router();
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const processDates = (cities, callback) => {
-
-  const data = _(cities)
+const processDates = (cities) => {
+  return _(cities)
     .filter(({ time }) => {
       const isFive = time.indexOf('5:') > 0;
       const isPm = time.indexOf('p.m') > 0;
@@ -31,21 +30,19 @@ const processDates = (cities, callback) => {
       };
     })
     .value();
-
-  callback(data);
 };
 
 // RETURNS ALL THE USERS IN THE DATABASE
 router.get('/', function(req, res) {
   scrape()
     .then(cities => {
-      console.log('xxx why xxxx');
+      console.log('xxx why does this not work? xxxx');
       console.log('cities: ', cities);
 
-      processDates(cities, (responseData) => {
+      (async () => {
+        const responseData = await processDates(cities);
         res.status(200).send(responseData);
-      });
-
+      })();
     })
     .catch(error => {
       console.log(error);
