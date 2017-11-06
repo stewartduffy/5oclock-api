@@ -32,7 +32,10 @@ const processDates = cities => {
 router.get('/', function(req, res) {
   scrape()
     .then(cities => {
+      console.log('cities: ', cities);
       const responseData = processDates(cities);
+      console.log('responseData: ', responseData);
+
       res.status(200).send(responseData);
     })
     .catch(error => {
